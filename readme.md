@@ -14,4 +14,4 @@ mvn test -Dtest=TestRepositoryTests#test_get_a_account
 
 ```
 
-### todo: Fixing test cases failed when running test in bulk mode.
+### Todo: Fixing test cases failed when running test in bulk mode.
