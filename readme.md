@@ -7,5 +7,11 @@
 
 ### Run Test for adding new Account with embedded information.
 
-`mvn test -Dtest=TestRepositoryTests#test_add_new_account`
+```
+mvn test -Dtest=TestRepositoryTests#test_add_new_account
+mvn test -Dtest=TestRepositoryTests#test_delete_a_account
+mvn test -Dtest=TestRepositoryTests#test_get_a_account
 
+```
+
+### todo: Fixing test cases failed when running in bulk test mode.
