@@ -5,8 +5,7 @@
 
 `mvn clean install`
 
-### Run it.
+### Run Test for adding new Account with embedded information.
 
-`mvn spring-boot:run`
+`mvn test -Dtest=TestRepositoryTests#test_add_new_account`
 
-### Shut down just press `control + c`
