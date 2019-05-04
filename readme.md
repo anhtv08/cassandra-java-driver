@@ -8,3 +8,5 @@
 ### Run it.
 
 `mvn spring-boot:run`
+
+### Shut down just press `control + c`
