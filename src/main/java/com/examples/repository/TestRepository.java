@@ -19,7 +19,6 @@ public class TestRepository  {
         Mapper mapper =mappingManager.mapper(Account.class);
         mapper.save(account);
 
-
     }
     public void deleteAccount(Account account){
         Mapper mapper =mappingManager.mapper(Account.class);

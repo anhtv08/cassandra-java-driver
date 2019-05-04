@@ -257,7 +257,7 @@ concurrent_writes: 4
 # memtable_total_space_in_mb: 2048
 
 # Total space to use for commitlogs.  Since commitlog segments are
-# mmapped, and hence use up address space, the default size is 32
+# mmapped, and hence use up addresses space, the default size is 32
 # on 32-bit JVMs, and 1024 on 64-bit JVMs.
 #
 # If space gets above this value (it will round up to the next nearest
@@ -295,7 +295,7 @@ ssl_storage_port: ${build.cassandra.ssl_storage_port}
 # Leaving it blank leaves it up to InetAddress.getLocalHost(). This
 # will always do the Right Thing _if_ the node is properly configured
 # (hostname, name resolution, etc), and the Right Thing is to use the
-# address associated with the hostname (it might not be).
+# addresses associated with the hostname (it might not be).
 #
 # Setting this to 0.0.0.0 is always wrong.
 listen_address: localhost
@@ -309,7 +309,7 @@ listen_address: localhost
 # internode_authenticator: org.apache.cassandra.auth.AllowAllInternodeAuthenticator
 
 # Whether to start the native transport server.
-# Please note that the address on which the native transport is bound is the
+# Please note that the addresses on which the native transport is bound is the
 # same as the rpc_address. The port however is different and specified below.
 start_native_transport: true
 # port for the CQL native transport to listen for clients on
@@ -323,7 +323,7 @@ native_transport_port: ${build.cassandra.native_transport_port}
 # Whether to start the thrift rpc server.
 start_rpc: false
 
-# The address to bind the Thrift RPC service to -- clients connect
+# The addresses to bind the Thrift RPC service to -- clients connect
 # here. Unlike ListenAddress above, you _can_ specify 0.0.0.0 here if
 # you want Thrift to listen on all interfaces.
 #
@@ -508,7 +508,7 @@ cross_node_timeout: false
 #  - RackInferringSnitch:
 #    Proximity is determined by rack and data center, which are
 #    assumed to correspond to the 3rd and 2nd octet of each node's
-#    IP address, respectively.  Unless this happens to match your
+#    IP addresses, respectively.  Unless this happens to match your
 #    deployment conventions (as it did Facebook's), this is best used
 #    as an example of writing a custom Snitch class.
 #  - Ec2Snitch:

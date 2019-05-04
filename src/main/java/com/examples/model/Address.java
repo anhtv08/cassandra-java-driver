@@ -10,8 +10,8 @@ import lombok.*;
 @Builder
 @Setter
 @UDT(
-        keyspace = "ks",
-        name = "address"
+        keyspace = "cassandra_examples",
+        name = "Address"
 )
 public class Address {
     @Field(

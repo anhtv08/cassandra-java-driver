@@ -53,7 +53,7 @@ public class TestController {
                 .builder()
                 .accountId("joeytrang")
                 .fullName("Trang van anh")
-                .address(addresses)
+                .addresses(addresses)
                 .build();
 
         repository.addNewAccount(testAccount);

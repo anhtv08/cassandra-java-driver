@@ -5,6 +5,7 @@ import com.examples.model.Account;
 import com.examples.model.Address;
 import com.google.common.collect.Lists;
 import org.apache.thrift.transport.TTransportException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,11 +23,12 @@ public class TestRepositoryTests extends CassandraTestHelper {
 
     TestRepository testRepository;
     MappingManager mappingManager;
+    final String CQL_FILE = "cql/account.cql";
 
     @Before
     public void setup() throws IOException, TTransportException {
 
-        setupCassandra();
+        setupCassandra(CQL_FILE);
         mappingManager = new MappingManager(
                 session
         );
@@ -70,7 +72,7 @@ public class TestRepositoryTests extends CassandraTestHelper {
                 .builder()
                 .accountId("joeytrang")
                 .fullName("Trang van anh")
-                .address(addresses)
+                .addresses(addresses)
                 .build();
 
         testRepository.addNewAccount(testAccount);
@@ -96,6 +98,10 @@ public class TestRepositoryTests extends CassandraTestHelper {
 
         Account account = testRepository.getAccount(testAccount);
         assertNotNull(account);
+    }
+    @After
+    public void cleanup(){
+        cleanupCassandra();
     }
 
 }

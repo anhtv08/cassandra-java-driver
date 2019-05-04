@@ -35,8 +35,8 @@ public class Account {
      private  String fullName;
 
      @Column(
-            name="address"
+            name="addresses"
      )
      @Frozen
-     private List<Address> address;
+     private List<Address> addresses;
 }

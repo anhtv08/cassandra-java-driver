@@ -2,23 +2,30 @@ package com.examples.repository;
 
 import com.datastax.driver.core.Session;
 import org.apache.thrift.transport.TTransportException;
+import org.cassandraunit.CQLDataLoader;
+import org.cassandraunit.dataset.CQLDataSet;
+import org.cassandraunit.dataset.cql.ClassPathCQLDataSet;
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
 
 import java.io.IOException;
 
+import static org.cassandraunit.utils.EmbeddedCassandraServerHelper.CASSANDRA_RNDPORT_YML_FILE;
+
 public class CassandraTestHelper {
 
-   final String CQL_FILE ="classpath:/schema/account.cql";
-
    Session session;
-   void setupCassandra() throws IOException, TTransportException {
+   void setupCassandra(String cqlFile) throws IOException, TTransportException {
        EmbeddedCassandraServerHelper.startEmbeddedCassandra(
-               CQL_FILE,
+               CASSANDRA_RNDPORT_YML_FILE,
                1000000L);
 
        session = EmbeddedCassandraServerHelper.getSession();
+       CQLDataSet dataSet = new ClassPathCQLDataSet(cqlFile);
+       CQLDataLoader dataLoader = new CQLDataLoader(session);
+       dataLoader.load(dataSet);
+
    }
-   void  cleanupCassanra(){
+   void cleanupCassandra(){
        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
    }
 
