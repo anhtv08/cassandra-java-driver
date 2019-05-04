@@ -15,7 +15,7 @@ import java.util.UUID;
 @Builder
 @Setter
 @Table(
-        keyspace = "ks", name = "users",
+        keyspace = "cassandra_examples", name = "Account",
         readConsistency = "LOCAL_ONE",
         writeConsistency = "LOCAL_QUORUM",
         caseSensitiveKeyspace = false,

@@ -19,6 +19,7 @@
         <datastax.driver.mapping.version>3.1.0</datastax.driver.mapping.version>
         <cassandra.unit-test.version>3.5.0.1</cassandra.unit-test.version>
         <lombok.version>1.18.6</lombok.version>
+        <guava.version>19.0</guava.version>
     </properties>
 
     <dependencies>
@@ -27,6 +28,12 @@
             <groupId>com.datastax.oss</groupId>
             <artifactId>java-driver-core</artifactId>
             <version>${datastax.driver.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.datastax.oss</groupId>
+                    <artifactId>java-driver-shaded-guava</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -38,6 +45,18 @@
             <groupId>org.cassandraunit</groupId>
             <artifactId>cassandra-unit</artifactId>
             <version>${cassandra.unit-test.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.datastax.cassandra</groupId>
