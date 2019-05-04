@@ -40,6 +40,33 @@ public class TestRepositoryTests extends CassandraTestHelper {
     }
     @Test
     public void test_add_new_account(){
+        createSampleTestData();
+        Account testAccount  = createSampleTestData();
+        testRepository.addNewAccount(testAccount);
+    }
+
+    @Test
+    public void test_delete_a_account(){
+
+        Account testAccount  = createSampleTestData();
+        testRepository.addNewAccount(testAccount);
+        testRepository.deleteAccount(testAccount);
+
+    }
+
+    @Test
+    public void test_get_a_account(){
+        Account testAccount  = createSampleTestData();
+
+        testRepository.addNewAccount(testAccount);
+        Account account = testRepository.getAccount(testAccount);
+        assertNotNull(account);
+    }
+    @After
+    public void cleanup(){
+        cleanupCassandra();
+    }
+    private Account createSampleTestData(){
         Address address_1 = Address.builder()
                 .email("anhtv@gmail.com")
                 .streetName("bedok1")
@@ -74,34 +101,7 @@ public class TestRepositoryTests extends CassandraTestHelper {
                 .fullName("Trang van anh")
                 .addresses(addresses)
                 .build();
-
-        testRepository.addNewAccount(testAccount);
-    }
-
-    @Test
-    public void test_delete_a_account(){
-        Account testAccount  =Account
-                .builder()
-                .accountId("joeytrang")
-                .build();
-
-        testRepository.deleteAccount(testAccount);
-
-    }
-
-    @Test
-    public void test_get_a_account(){
-        Account testAccount  =Account
-                .builder()
-                .accountId("joeytrang")
-                .build();
-
-        Account account = testRepository.getAccount(testAccount);
-        assertNotNull(account);
-    }
-    @After
-    public void cleanup(){
-        cleanupCassandra();
+        return testAccount;
     }
 
 }

@@ -6,14 +6,16 @@ import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Builder
 @Setter
+@EqualsAndHashCode
 @Table(
         keyspace = "cassandra_examples", name = "Account",
         readConsistency = "LOCAL_ONE",
@@ -22,7 +24,7 @@ import java.util.UUID;
         caseSensitiveTable = false
 )
 
-public class Account {
+public class Account implements Serializable {
 
      @PartitionKey
      @Column(
