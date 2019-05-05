@@ -62,6 +62,53 @@ public class TestRepositoryTests extends CassandraTestHelper {
         Account account = testRepository.getAccount(testAccount);
         assertNotNull(account);
     }
+
+    @Test
+    public void test_update_account(){
+
+        Account testAccount  = createSampleTestData();
+
+        testRepository.addNewAccount(testAccount);
+        Account account = testRepository.getAccount(testAccount);
+        assertNotNull(account);
+        assertEquals(3, account.getAddresses().size());
+
+
+        // remove address
+        Address address_1 = Address.builder()
+                .email("anhtv@gmail.com")
+                .streetName("bedok1")
+                .zipCode("127")
+                .build();
+
+        Address address_2 = Address.builder()
+                .email("anhtv2@gmail.com")
+                .streetName("Bedok2")
+                .zipCode("127")
+                .build();
+
+
+        List<Address> addresses = (
+
+                Lists.newArrayList(
+                        address_1,
+                        address_2
+
+
+                )
+        );
+        // update new set of account.
+        account.setAddresses(addresses);
+
+        // updated account
+        testRepository.addNewAccount(account);
+        Account updatedAccount = testRepository.getAccount(account);
+
+        assertNotNull(account);
+        assertEquals(2, updatedAccount.getAddresses().size());
+
+    }
+
     @After
     public void cleanup(){
         cleanupCassandra();

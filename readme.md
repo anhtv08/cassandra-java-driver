@@ -11,6 +11,7 @@
 mvn test -Dtest=TestRepositoryTests#test_add_new_account
 mvn test -Dtest=TestRepositoryTests#test_delete_a_account
 mvn test -Dtest=TestRepositoryTests#test_get_a_account
+mvn test -Dtest=TestRepositoryTests#test_udpate_account
 
 ```
 
