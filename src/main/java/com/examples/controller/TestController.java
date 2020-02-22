@@ -59,6 +59,37 @@ public class TestController {
 
         repository.addNewAccount(testAccount);
 
+        // safeObject by setting EMPTY value to reduce tombstone
+        Account testAccount_1  =Account
+                .builder()
+                .accountId("joeytrang1")
+                .fullName("")
+                .build();
+
+        repository.addNewAccount(testAccount_1);
+
+
+        // explicit setting null value will generating tombstone
+        Account testAccount_2  =Account
+                .builder()
+                .accountId("joeytrang2")
+                .fullName(null)
+                .build();
+
+        repository.addNewAccount(testAccount_2);
+
+
+        // missing setting will also generate tombstone
+        Account testAccount_3  =Account
+                .builder()
+                .accountId("joeytrang3")
+                .build();
+
+        repository.addNewAccount(testAccount_3);
+
+
+
+
         return "Added successfully!";
     }
 
